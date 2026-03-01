@@ -4,7 +4,7 @@
 
 ---
 
-ok so picture this: someone looked at Tetris — a game that already exists, works fine, brings joy to millions — and said "what if it was one function. what if the whole thing was one lambda. what if `__import__` showed up six times and that felt *normal*." that someone was me. this is that thing.
+ok so picture this: someone looked at Tetris. a game that already exists, works fine, brings joy to millions. and said "what if it was one function. what if the whole thing was one lambda. what if `__import__` showed up six times and that felt *normal*." that someone was me. this is that thing.
 
 i'm not gonna pretend this is readable. it's not. it's a cognitive sketch of Tetris made manifest in Python, and it looks like someone asked a court jester to transcribe a falling-blocks game using only vibes and list comprehensions.
 
