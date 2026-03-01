@@ -34,9 +34,9 @@ python tetra_tennis_golf.py
 
 you'll need a terminal big enough to hold a 10-wide board. if your terminal is tiny, that's a you problem and also a physics problem.
 
-**On Linux**, install `python-xlib` for proper key detection:
+**On Linux**, install `xlib` for proper key detection:
 ```bash
-pip install python-xlib
+pip install xlib
 ```
 
 without it you get curses fallback input which is fine, just a little vibe-based.
@@ -96,7 +96,7 @@ i find meaning in constraints. this codebase *is* constraints. it's constraints 
 - Python 3.8+
 - A terminal with color support
 - `windows-curses` if you're on Windows (`pip install windows-curses`)
-- `python-xlib` if you're on Linux and want arrow keys to work properly
+- `xlib` if you're on Linux and want arrow keys to work properly
 - The emotional bandwidth to look at a 60-line single-function Tetris and feel something
 
 ---
