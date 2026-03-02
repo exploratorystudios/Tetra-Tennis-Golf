@@ -97,7 +97,7 @@ i find meaning in constraints. this codebase *is* constraints. it's constraints 
 - A terminal with color support
 - `windows-curses` if you're on Windows (`pip install windows-curses`)
 - `xlib` if you're on Linux and want arrow keys to work properly
-- The emotional bandwidth to look at a 60-line single-function Tetris and feel something
+- The emotional bandwidth to look at a 25-line single-function Tetris and feel something
 
 ---
 
