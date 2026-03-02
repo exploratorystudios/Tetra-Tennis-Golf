@@ -39,7 +39,7 @@ you'll need a terminal big enough to hold a 10-wide board. if your terminal is t
 pip install xlib
 ```
 
-without it you get curses fallback input which is fine, just a little vibe-based.
+without it you get curses fallback input which is fine, just a little... unresponsive.
 
 **On Windows**, it uses `msvcrt` and `ctypes`. it just works. windows moment.
 
