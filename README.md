@@ -25,6 +25,7 @@ It's Tetris. Full Tetris. In your terminal. With:
 the whole thing runs in one function called `g`. there's a reason it's called `g`. it's short. everything here is short. that's the point.
 
 ---
+You can also play on this website here: https://tetratennisgolf.fly.dev/
 
 ## How To Run It
 
