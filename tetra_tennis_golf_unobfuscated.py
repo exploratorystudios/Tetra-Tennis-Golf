@@ -211,9 +211,18 @@ def game(stdscr):
             mask = PIECES[piece_index][0]
             x, y = 3, 0
 
+        # hard drop: space instantly places piece at ghost position
+        if key == ord(' '):
+            for i in range(y & ~1, H, 2):
+                if collides(mask, x, i + 2):
+                    y = i
+                    break
+            y_aligned = y & ~1
+
         # gravity
         speed = max(1, 10 - score // 10)
         if key in (curses.KEY_DOWN, ord(' ')) or tick % speed == 0:
+            y_aligned = y & ~1
             if collides(mask, x, y_aligned + 2):
                 # lock piece
                 for r, c in cells(mask):
@@ -253,7 +262,10 @@ def game(stdscr):
                     time.sleep(2)
                     return
             else:
-                y += 2 if key == curses.KEY_DOWN else 1
+                if key == curses.KEY_DOWN and not collides(mask, x, y_aligned + 4):
+                    y += 2
+                else:
+                    y += 1
 
         # render
         stdscr.erase()
@@ -261,6 +273,8 @@ def game(stdscr):
         stdscr.addstr(0, board_x, "╔" + "═" * (W * 2) + "╗", curses.A_REVERSE)
         stdscr.addstr(H // 2 + 1, board_x, "╚" + "═" * (W * 2) + "╝", curses.A_REVERSE)
         stdscr.addstr(0, board_x + 1, f"Score:{score}", curses.A_REVERSE)
+        stdscr.addstr(2, board_x + W * 2 + 3, "NEXT")
+        stdscr.addstr(2, board_x - 9, "HOLD")
 
         # draw board and piece
         ghost_y = next(i for i in range(y_aligned, H, 2) if collides(mask, x, i + 2))
@@ -299,6 +313,15 @@ def game(stdscr):
                     ch = "  "
 
                 stdscr.addstr(r + 1, board_x + c * 2 + 1, ch, color)
+
+        # NEXT piece preview
+        for r, c in cells(PIECES[next_piece][0]):
+            stdscr.addstr(r + 4, board_x + W * 2 + 3 + c * 2, "██", curses.color_pair(next_piece + 1))
+
+        # HOLD piece preview
+        if hold_piece >= 0:
+            for r, c in cells(PIECES[hold_piece][0]):
+                stdscr.addstr(r + 4, board_x - 9 + c * 2, "██", curses.color_pair(hold_piece + 1))
 
         stdscr.refresh()
         tick += 1
